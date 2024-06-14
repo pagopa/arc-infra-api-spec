@@ -48,3 +48,13 @@ variable "domain" {
     error_message = "Max length is 12 chars."
   }
 }
+
+variable "external_domain" {
+  type        = string
+  description = "Domain for delegation"
+}
+
+variable "apim_dns_zone_prefix" {
+  type        = string
+  description = "The dns subdomain for apim."
+}
