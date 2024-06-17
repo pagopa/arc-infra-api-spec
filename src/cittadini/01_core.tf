@@ -50,11 +50,11 @@ module "apim_api_cittadini_v1" {
   service_url  = "https://${var.dns_zone_internal_entry}.${var.apim_dns_zone_prefix}.${var.external_domain}/pagopaarcbe/arc"
 
   content_format = "openapi"
-  content_value = templatefile("./api/cittadini/v1/_openapi.json.tpl", {
+  content_value = templatefile("./api/cittadini/v1/arc_transactions_openapi.json.tpl", {
     host = local.apim_hostname
   })
 
-  xml_content = templatefile("./api/cittadini/v1/_base_policy.xml", {
+  xml_content = templatefile("./api/cittadini/v1/arc_transactions_list_base_policy.xml", {
     hostname = local.cittadini_ingress_be
   })
 }
