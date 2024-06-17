@@ -20,7 +20,7 @@ module "apim_cittadini_product" {
   approval_required     = false
   subscriptions_limit   = 0
 
-  policy_xml = file("./api_product/arc_transactions_list_base_policy.xml")
+  policy_xml = file("./api_product/arc_transactions_base_policy.xml")
 }
 
 resource "azurerm_api_management_api_version_set" "cittadini_ver_set" {

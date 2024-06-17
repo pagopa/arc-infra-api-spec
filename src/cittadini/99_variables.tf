@@ -63,3 +63,8 @@ variable "dns_zone_internal_entry" {
   type        = string
   description = "The internal dns entry"
 }
+
+variable "ingress_load_balancer_hostname" {
+  description = "The hostname for the ingress load balancer"
+  type        = string
+}
