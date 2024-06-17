@@ -20,7 +20,7 @@ module "apim_cittadini_product" {
   approval_required     = false
   subscriptions_limit   = 0
 
-  policy_xml = file("./api_product/_base_policy.xml")
+  policy_xml = file("./api_product/arc_transactions_list_base_policy.xml")
 }
 
 resource "azurerm_api_management_api_version_set" "cittadini_ver_set" {
@@ -56,5 +56,6 @@ module "apim_api_cittadini_v1" {
 
   xml_content = templatefile("./api/cittadini/v1/arc_transactions_list_base_policy.xml", {
     hostname = local.cittadini_ingress_be
+    ingress_load_balancer_hostname = var.ingress_load_balancer_hostname
   })
 }
