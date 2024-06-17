@@ -1,7 +1,8 @@
 <policies>
     <inbound>
-      <base />
-      <set-backend-service base-url="https://${hostname}" />
+        <base />
+        <set-backend-service base-url="https://${ingress_load_balancer_hostname}/pagopaarcbe" />
+        <rewrite-uri template="/arc/transactions" />
     </inbound>
     <outbound>
       <base />

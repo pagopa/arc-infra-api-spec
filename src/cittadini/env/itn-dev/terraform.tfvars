@@ -19,3 +19,4 @@ external_domain         = "pagopa.it"
 apim_dns_zone_prefix    = "dev.cittadini-p4pa"
 dns_zone_internal_entry = "citizen.internal.dev.cittadini-p4pa"
 ### Aks
+ingress_load_balancer_hostname = "citizen.internal.dev.cittadini-p4pa.pagopa.it"
