@@ -58,3 +58,8 @@ variable "apim_dns_zone_prefix" {
   type        = string
   description = "The dns subdomain for apim."
 }
+
+variable "dns_zone_internal_entry" {
+  type        = string
+  description = "The internal dns entry"
+}
