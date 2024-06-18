@@ -4,25 +4,25 @@ info:
   description: Api and Models
   version: 0.0.1
 servers:
-  - url: "https://api.dev.cittadini-p4pa.pagopa.it/v1/arc"
+  - url: 'https://api.dev.cittadini-p4pa.pagopa.it/v1/arc'
 paths:
   /transactions:
     get:
       tags:
         - arc transactions
-      summary: "Retrieve the paged transaction list from arc"
+      summary: Retrieve the paged transaction list from arc
       operationId: getTransactionsList
       parameters:
         - name: page
           in: query
-          description: "Number of page required"
+          description: Number of page required
           required: false
           schema:
             type: integer
             format: int32
         - name: size
           in: query
-          description: "Number of items for page"
+          description: Number of items for page
           required: false
           schema:
             type: integer
@@ -30,25 +30,25 @@ paths:
             default: 10
         - name: filter
           in: query
-          description: "The field passed to filter the list of transactions"
+          description: The field passed to filter the list of transactions
           required: false
           schema:
             type: string
-            enum: ["payedByMe", "registeredToMe"]
+            enum: [payedByMe, registeredToMe]
           example: payedByMe
       responses:
         '200':
-          description: "Obtained transaction list"
+          description: Obtained transaction list
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionsListDTO'
         '401':
-          description: "Wrong or missing function key"
+          description: Wrong or missing function key
         '429':
-          description: "Too many Requests"
+          description: Too many Requests
         '500':
-          description: "Service unavailable"
+          description: Service unavailable
           content:
             application/json:
               schema:
@@ -89,7 +89,7 @@ components:
         transactionDate:
           type: string
           format: date-time
-          example: "2024-05-31T13:07:25Z"
+          example: '2024-05-31T13:07:25Z'
         isCart:
           type: boolean
         payedByMe:
@@ -108,4 +108,4 @@ components:
             - invalid_request
         error_description:
           type: string
-          x-field-extra-annotation: "@com.fasterxml.jackson.annotation.JsonProperty(\"error_description\")"
+          x-field-extra-annotation: '@com.fasterxml.jackson.annotation.JsonProperty("error_description")'

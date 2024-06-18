@@ -20,12 +20,12 @@ module "apim_cittadini_product" {
   approval_required     = false
   subscriptions_limit   = 0
 
-  policy_xml = file("./api_product/arc_transactions_base_policy.xml")
+  policy_xml = file("./api_product/cittadini_base_policy.xml")
 }
 
 resource "azurerm_api_management_api_version_set" "cittadini_ver_set" {
 
-  name                = "${var.env_short}-cittadini-version-set"
+  name                = "${var.env_short}-cittadini-version-set"xml
   resource_group_name = local.apim_rg
   api_management_name = local.apim_name
   display_name        = "Cittadini API"
@@ -50,11 +50,11 @@ module "apim_api_cittadini_v1" {
   service_url  = "https://${var.dns_zone_internal_entry}.${var.apim_dns_zone_prefix}.${var.external_domain}/pagopaarcbe/arc"
 
   content_format = "openapi"
-  content_value = templatefile("./api/cittadini/v1/arc_transactions_openapi.json.tpl", {
+  content_value = templatefile("./api/cittadini/v1/transactions_openapi.yml", {
     host = local.apim_hostname
   })
 
-  xml_content = templatefile("./api/cittadini/v1/arc_transactions_list_base_policy.xml", {
+  xml_content = templatefile("./api/cittadini/v1/transactions_base_policy.xml", {
     hostname = local.cittadini_ingress_be
     ingress_load_balancer_hostname = var.ingress_load_balancer_hostname
   })
