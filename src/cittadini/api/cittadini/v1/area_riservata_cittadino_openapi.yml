@@ -4,7 +4,7 @@ info:
   description: Api and Models
   version: 0.0.1
 servers:
-  - url: 'https://${hostname}/v1/arc'
+  - url: 'https://${hostname}/arc/v1'
 paths:
   /transactions:
     get:
