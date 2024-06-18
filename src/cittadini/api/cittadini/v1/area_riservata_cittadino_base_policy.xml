@@ -2,7 +2,7 @@
     <inbound>
         <base />
         <set-backend-service base-url="https://${cittadini_ingress_hostname}/pagopaarcbe" />
-        <rewrite-uri template="/arc" />
+        <rewrite-uri template="arc/transactions" />
     </inbound>
     <outbound>
       <base />
