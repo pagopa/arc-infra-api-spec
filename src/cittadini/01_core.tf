@@ -51,11 +51,10 @@ module "apim_api_cittadini_v1" {
 
   content_format = "openapi"
   content_value = templatefile("./api/cittadini/v1/area_riservata_cittadino_openapi.yml", {
-    host = local.apim_hostname
+    hostname = local.apim_hostname
   })
 
   xml_content = templatefile("./api/cittadini/v1/area_riservata_cittadino_base_policy.xml", {
-    hostname = local.cittadini_ingress_be
-    ingress_load_balancer_hostname = var.ingress_load_balancer_hostname
+    cittadini_ingress_hostname = local.cittadini_ingress_hostname
   })
 }
