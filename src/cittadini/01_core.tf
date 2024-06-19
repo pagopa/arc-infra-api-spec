@@ -54,5 +54,5 @@ module "apim_api_cittadini_v1" {
     hostname = local.apim_hostname
   })
 
-  xml_content = templatefile("./api/cittadini/v1/area_riservata_cittadino_base_policy.xml",{})
+  xml_content = templatefile("./api/cittadini/v1/area_riservata_cittadino_base_policy.xml", {})
 }

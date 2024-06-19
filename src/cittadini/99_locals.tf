@@ -6,5 +6,5 @@ locals {
   apim_name = "${local.project_core}-apim"
   apim_rg   = "${local.project_core}-api-rg"
 
-  apim_hostname              = "api.${var.apim_dns_zone_prefix}.${var.external_domain}"
+  apim_hostname = "api.${var.apim_dns_zone_prefix}.${var.external_domain}"
 }
