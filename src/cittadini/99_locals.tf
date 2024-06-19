@@ -7,5 +7,4 @@ locals {
   apim_rg   = "${local.project_core}-api-rg"
 
   apim_hostname              = "api.${var.apim_dns_zone_prefix}.${var.external_domain}"
-  cittadini_ingress_hostname = "${var.dns_zone_internal_entry}.${var.apim_dns_zone_prefix}.${var.external_domain}"
 }
