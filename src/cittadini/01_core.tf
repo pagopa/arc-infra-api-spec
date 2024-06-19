@@ -20,7 +20,7 @@ module "apim_cittadini_product" {
   approval_required     = false
   subscriptions_limit   = 0
 
-  policy_xml = file("./api_product/_base_policy.xml")
+  policy_xml = file("./api_product/cittadini_base_policy.xml")
 }
 
 resource "azurerm_api_management_api_version_set" "cittadini_ver_set" {
@@ -50,11 +50,9 @@ module "apim_api_cittadini_v1" {
   service_url  = "https://${var.dns_zone_internal_entry}.${var.apim_dns_zone_prefix}.${var.external_domain}/pagopaarcbe/arc"
 
   content_format = "openapi"
-  content_value = templatefile("./api/cittadini/v1/_openapi.json.tpl", {
-    host = local.apim_hostname
+  content_value = templatefile("./api/cittadini/v1/area_riservata_cittadino_openapi.yml", {
+    hostname = local.apim_hostname
   })
 
-  xml_content = templatefile("./api/cittadini/v1/_base_policy.xml", {
-    hostname = local.cittadini_ingress_be
-  })
+  xml_content = templatefile("./api/cittadini/v1/area_riservata_cittadino_base_policy.xml", {})
 }
