@@ -175,7 +175,7 @@ components:
             - PPAL
             - UNKNOWN
         payer:
-          $ref: ''#/components/schemas/UserDetailDTO'
+          $ref: '#/components/schemas/UserDetailDTO'
         amount:
           type: integer
           format: int64
