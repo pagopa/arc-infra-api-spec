@@ -92,6 +92,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorDTO'
+              example:
+                error: "transaction_not_found_error"
+                error_description: "string"
   /transactions/{transactionId}/receipt:
     get:
       tags:
@@ -275,6 +278,7 @@ components:
           enum:
             - generic_error
             - transaction_not_found_error
+            - receipt_not_found_error
             - invalid_request
         error_description:
           type: string
