@@ -22,7 +22,7 @@ module "apim_api_cittadini_v1" {
   display_name = "Cittadini API"
   path         = ""
   protocols    = ["https"]
-  service_url  = "https://${var.dns_zone_internal_entry}.${var.apim_dns_zone_prefix}.${var.external_domain}/pagopaarcbe/arc"
+  service_url  = "https://${var.dns_zone_internal_entry}.${var.apim_dns_zone_prefix}.${var.external_domain}/arcbe"
 
   content_format = "openapi"
   content_value = templatefile("./api/cittadini/v1/_openapi.yml", {
