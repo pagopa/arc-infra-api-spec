@@ -66,7 +66,7 @@ paths:
           description: "Wrong or missing code or state"
         '429':
           description: "Too many Requests"
-        '500':
+        '503':
           description: "Service unavailable"
           content:
             application/json:
@@ -252,8 +252,6 @@ components:
         - access_token
         - token_type
         - expires_in
-        - refresh_token
-        - id_token
       properties:
         access_token:
           type: string
