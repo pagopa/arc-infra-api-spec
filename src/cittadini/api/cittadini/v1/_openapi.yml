@@ -109,6 +109,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionsListDTO'
+        '400':
+          description: "Invalid Request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+              example:
+                error: invalid_amount
+                error_description: "Invalid amount format"
         '401':
           description: Wrong or missing function key
         '429':
@@ -139,6 +148,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionDetailsDTO'
+        '400':
+          description: "Invalid Request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+              example:
+                error: invalid_amount
+                error_description: "Invalid amount format"
         '401':
           description: Wrong or missing function key
         '404':
@@ -236,6 +254,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaymentNoticesListDTO'
+        '400':
+          description: "Invalid Request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+              example:
+                error: invalid_request
+                error_description: "One or more inputs provided during the request from pull payment are invalid"
         '401':
           description: "Wrong or missing function key"
         '500':
