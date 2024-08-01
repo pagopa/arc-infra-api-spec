@@ -2,7 +2,7 @@
     <inbound>
         <cors allow-credentials="true">
             <allowed-origins>
-                <origin>https://${fe_origin}</origin>
+                <origin>https://${fe_origin}</origin>${dev_origin}
             </allowed-origins>
             <allowed-methods preflight-result-max-age="300">
                 <method>*</method>
