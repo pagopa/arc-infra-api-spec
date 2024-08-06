@@ -630,5 +630,5 @@ components:
     BearerAuth:
       type: http
       scheme: bearer
-      description: JWT token get after OneIdentity Login
+      description: JWT token get after login
       bearerFormat: JWT
