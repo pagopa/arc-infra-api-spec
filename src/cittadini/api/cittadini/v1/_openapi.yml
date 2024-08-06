@@ -77,6 +77,8 @@ paths:
       tags:
         - arc transactions
       summary: Retrieve the paged transaction list from arc
+      security:
+        - BearerAuth: []
       operationId: getTransactionsList
       parameters:
         - name: page
@@ -133,6 +135,8 @@ paths:
       tags:
         - arc transactions
       summary: Retrieve transaction details from arc
+      security:
+        - BearerAuth: []
       operationId: getTransactionDetails
       parameters:
         - name: transactionId
@@ -181,6 +185,8 @@ paths:
       tags:
         - arc transactions
       summary: Retrieve transaction receipt from arc
+      security:
+        - BearerAuth: []
       operationId: getTransactionReceipt
       parameters:
         - name: transactionId
@@ -221,6 +227,8 @@ paths:
       tags:
         - arc payment notices
       summary: "Retrieve payment notices from arc"
+      security:
+        - BearerAuth: []
       operationId: getPaymentNotices
       parameters:
         - name: dueDate
@@ -429,7 +437,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PaymentNoticeDTO'
-          x-field-extra-annotation: "@lombok.Builder.Default"
     PaymentNoticeDTO:
       required:
         - iupd
@@ -493,7 +500,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PaymentOptionDTO'
-          x-field-extra-annotation: "@lombok.Builder.Default"
     LocalDate:
       format: date
       type: string
@@ -540,7 +546,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InstallmentDTO'
-          x-field-extra-annotation: "@lombok.Builder.Default"
     InstallmentDTO:
       required:
         - nav
@@ -621,4 +626,9 @@ components:
             - invalid_request
         error_description:
           type: string
-          x-field-extra-annotation: '@com.fasterxml.jackson.annotation.JsonProperty("error_description")'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: JWT token get after login
+      bearerFormat: JWT
