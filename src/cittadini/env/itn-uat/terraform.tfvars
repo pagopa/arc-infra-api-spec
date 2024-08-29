@@ -1,7 +1,7 @@
 # general
 prefix         = "arc"
-env_short      = "d"
-env            = "dev"
+env_short      = "u"
+env            = "uat"
 domain         = "cittadini"
 location       = "italynorth"
 location_short = "itn"
@@ -9,12 +9,12 @@ location_short = "itn"
 
 tags = {
   CreatedBy   = "Terraform"
-  Environment = "DEV"
+  Environment = "UAT"
   Owner       = "ARC"
   Source      = "https://github.com/pagopa/arc-infra-api-spec"
   CostCenter  = "TS310 - PAGAMENTI & SERVIZI"
 }
 
 external_domain         = "pagopa.it"
-apim_dns_zone_prefix    = "dev.cittadini-p4pa"
+apim_dns_zone_prefix    = "uat.cittadini"
 dns_zone_internal_entry = "citizen.internal"

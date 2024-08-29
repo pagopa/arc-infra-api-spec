@@ -11,7 +11,7 @@ tags = {
   CreatedBy   = "Terraform"
   Environment = "DEV"
   Owner       = "ARC"
-  Source      = "https://github.com/pagopa/pagopa-arc-api-spec.git"
+  Source      = "https://github.com/pagopa/arc-infra-api-spec"
   CostCenter  = "TS310 - PAGAMENTI & SERVIZI"
 }
 
