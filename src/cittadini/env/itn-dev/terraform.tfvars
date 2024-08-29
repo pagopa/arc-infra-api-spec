@@ -16,5 +16,5 @@ tags = {
 }
 
 external_domain         = "pagopa.it"
-apim_dns_zone_prefix    = "dev.cittadini-p4pa"
+apim_dns_zone_prefix    = "dev.cittadini"
 dns_zone_internal_entry = "citizen.internal"
