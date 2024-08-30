@@ -715,6 +715,7 @@ components:
             - receipt_not_found_error
             - invalid_amount
             - invalid_date
+            - invalid_email
             - invalid_request
         error_description:
           type: string
