@@ -78,6 +78,8 @@ paths:
         - arc auth
       summary: "Provide the logout endpoint"
       operationId: getLogoutEndpoint
+      security:
+        - bearerAuth: [ ]
       responses:
         '200':
           description: "User successfully logged out"
