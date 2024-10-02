@@ -273,9 +273,9 @@ paths:
       tags:
         - arc notices
       summary: "Retrieve the paged notices list from arc"
-      operationId: getNoticesList
       security:
-        - bearerAuth: [ ]
+        - BearerAuth: [ ]
+      operationId: getNoticesList
       parameters:
         - name: x-continuation-token
           in: header
