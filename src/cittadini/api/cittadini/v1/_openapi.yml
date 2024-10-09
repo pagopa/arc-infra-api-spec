@@ -355,7 +355,7 @@ paths:
       summary: "Retrieve notice details from arc"
       operationId: getNoticeDetails
       security:
-        - bearerAuth: [ ]
+        - BearerAuth: [ ]
       parameters:
         - name: eventId
           in: path
