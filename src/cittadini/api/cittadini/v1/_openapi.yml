@@ -64,6 +64,8 @@ paths:
                 $ref: '#/components/schemas/TokenResponse'
         '401':
           description: "Wrong or missing code or state"
+        '403':
+          description: "User not authorized"
         '429':
           description: "Too many Requests"
         '503':
