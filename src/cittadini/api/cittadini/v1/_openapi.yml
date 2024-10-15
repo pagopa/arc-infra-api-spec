@@ -402,7 +402,7 @@ paths:
       summary: "Retrieve notice receipt from arc"
       operationId: getNoticeReceipt
       security:
-        - bearerAuth: [ ]
+        - BearerAuth: [ ]
       parameters:
         - name: eventId
           in: path
