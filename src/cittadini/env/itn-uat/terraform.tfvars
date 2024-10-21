@@ -18,3 +18,5 @@ tags = {
 external_domain         = "pagopa.it"
 apim_dns_zone_prefix    = "uat.cittadini"
 dns_zone_internal_entry = "citizen.internal"
+
+apim_diagnostics_enabled= "true"

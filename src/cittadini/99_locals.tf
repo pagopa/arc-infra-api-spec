@@ -8,4 +8,6 @@ locals {
 
   apim_hostname = "api.${var.apim_dns_zone_prefix}.${var.external_domain}"
   fe_hostname   = "${var.apim_dns_zone_prefix}.${var.external_domain}"
+
+  apim_logger_id = "${data.azurerm_api_management.this.id}/loggers/${local.apim_name}-logger"
 }

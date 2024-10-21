@@ -63,3 +63,8 @@ variable "dns_zone_internal_entry" {
   type        = string
   description = "The internal dns entry"
 }
+
+variable "apim_diagnostics_enabled" {
+  type        = bool
+  description = "To enable or not APIm diagnostics data"
+}
