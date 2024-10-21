@@ -19,4 +19,4 @@ external_domain         = "pagopa.it"
 apim_dns_zone_prefix    = "dev.cittadini"
 dns_zone_internal_entry = "citizen.internal"
 
-apim_diagnostics_enabled= "true"
+apim_diagnostics_enabled = "true"
