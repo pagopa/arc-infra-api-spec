@@ -25,7 +25,7 @@ resource "azurerm_application_insights_workbook" "cittadini_workbook" {
       domain          = var.domain
       env_short       = var.env_short
       location_short  = var.location_short
-    })
+  })
 
   tags = {
     ENV = var.env
