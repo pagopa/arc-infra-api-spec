@@ -156,7 +156,8 @@
                                 "representation": "warning",
                                 "text": "{0}{1}"
                               }
-                            ]
+                            ],
+                            "customColumnWidthSetting": "20ch"
                           }
                         },
                         {
