@@ -109,7 +109,7 @@
                   "type": 3,
                   "content": {
                     "version": "KqlItem/1.0",
-                    "query": "let startTime = {timeRangeOverall:start};\nlet endTime = {timeRangeOverall:end};\nlet interval = totimespan({timeSpan:label});\nlet data = requests\n|where timestamp between (startTime .. endTime) and operation_Name has \"arc\";\nlet operationData = data;\nlet totalOperationCount = operationData\n| summarize Total = count() by operation_Name;\noperationData\n| join kind=inner totalOperationCount on operation_Name\n| summarize\n        Count = count(),\n        Users = dcount(tostring(customDimensions[\"Request-X-Forwarded-For\"])),\n        AvgResponseTime = round(avg(duration), 2)\n        by operation_Name, resultCode, Total\n| project\n        ['Request Name'] = operation_Name,\n        ['Result Code'] = resultCode,\n        ['Total Response'] = Count,\n        ['Rate %'] = (Count * 100) / Total,\n        ['Users Affected'] = Users,\n        ['Avg Response Time (ms)'] = AvgResponseTime\n| sort by ['Request Name']\n",
+                    "query": "let startTime = {timeRangeOverall:start};\nlet endTime = {timeRangeOverall:end};\nlet interval = totimespan({timeSpan:label});\nlet data = requests\n    | where timestamp between (startTime .. endTime) and operation_Name startswith \"arc\";\nlet operationData = data;\nlet totalOperationCount = operationData\n    | summarize Total = count() by operation_Name;\noperationData\n| join kind=inner totalOperationCount on operation_Name\n| summarize\n    Count = count(),\n    Users = dcount(tostring(customDimensions[\"Request-X-Forwarded-For\"])),\n    AvgResponseTime = round(avg(duration), 2)\n    by operation_Name, resultCode, Total\n| project\n    ['Request Name'] = operation_Name,\n    ['Result Code'] = resultCode,\n    ['Total Response'] = Count,\n    ['Rate %'] = (Count * 100) / Total,\n    ['Users Affected'] = Users,\n    ['Avg Response Time (ms)'] = AvgResponseTime\n| sort by ['Total Response'] desc\n\n",
                     "size": 0,
                     "showAnalytics": true,
                     "timeContextFromParameter": "timeRangeOverall",
@@ -271,14 +271,14 @@
                       "sortBy": [
                         {
                           "itemKey": "$gen_heatmap_Total Response_2",
-                          "sortOrder": 1
+                          "sortOrder": 2
                         }
                       ]
                     },
                     "sortBy": [
                       {
                         "itemKey": "$gen_heatmap_Total Response_2",
-                        "sortOrder": 1
+                        "sortOrder": 2
                       }
                     ],
                     "tileSettings": {
@@ -356,16 +356,13 @@
                       }
                     }
                   },
-                  "name": "query - 14",
-                  "styleSettings": {
-                    "maxWidth": "80"
-                  }
+                  "name": "query - 14"
                 },
                 {
                   "type": 3,
                   "content": {
                     "version": "KqlItem/1.0",
-                    "query": "let startTime = {timeRangeOverall:start};\nlet endTime = {timeRangeOverall:end};\nlet interval = totimespan({timeSpan:label});\n\nlet dataset = requests\n    // additional filters can be applied here\n    | where timestamp between (startTime .. endTime)\n;\ndataset\n| summarize percentile_95=percentile(duration, 95) by bin(timestamp, interval)\n| project timestamp, percentile_95, watermark=1000\n| render timechart",
+                    "query": "let startTime = {timeRangeOverall:start};\nlet endTime = {timeRangeOverall:end};\nlet interval = totimespan({timeSpan:label});\n\nlet dataset = requests\n    // additional filters can be applied here\n    | where timestamp between (startTime .. endTime) and operation_Name has \"arc\"\n;\ndataset\n| summarize percentile_95=percentile(duration, 95) by bin(timestamp, interval)\n| project timestamp, percentile_95, watermark=1000\n| render timechart",
                     "size": 0,
                     "aggregation": 3,
                     "showAnalytics": true,
@@ -384,7 +381,7 @@
                   "type": 3,
                   "content": {
                     "version": "KqlItem/1.0",
-                    "query": "let startTime = {timeRangeOverall:start};\nlet endTime = {timeRangeOverall:end};\nlet interval = totimespan({timeSpan:label});\n\nlet tot = AzureDiagnostics\n| where TimeGenerated between (startTime .. endTime) \n| where requestUri_s has 'cittadini'\n| summarize tot = todouble(count()) by bin(TimeGenerated, interval);\nlet errors = AzureDiagnostics\n| where requestUri_s has 'p4pa'\n| where strcmp(httpStatusCode_s, \"400\") == 0 or strcmp(httpStatusCode_s, \"412\") > 0 \n| summarize not_ok = count() by bin(TimeGenerated, interval);\ntot\n| join kind=leftouter errors on TimeGenerated\n| project TimeGenerated, availability = (tot - coalesce(not_ok, 0))/tot",
+                    "query": "let startTime = {timeRangeOverall:start};\nlet endTime = {timeRangeOverall:end};\nlet interval = totimespan({timeSpan:label});\n\nlet tot = AzureDiagnostics\n| where TimeGenerated between (startTime .. endTime) \n| where requestUri_s has 'cittadini'\n| summarize tot = todouble(count()) by bin(TimeGenerated, interval);\nlet errors = AzureDiagnostics\n| where requestUri_s has 'cittadini'\n| where strcmp(httpStatusCode_s, \"400\") == 0 or strcmp(httpStatusCode_s, \"412\") > 0 \n| summarize not_ok = count() by bin(TimeGenerated, interval);\ntot\n| join kind=leftouter errors on TimeGenerated\n| project TimeGenerated, availability = (tot - coalesce(not_ok, 0))/tot",
                     "size": 0,
                     "aggregation": 3,
                     "showAnalytics": true,
@@ -658,8 +655,7 @@
               ],
               "timeContextFromParameter": "timeRangeOverall",
               "timeContext": {
-                "durationMs": 604800000,
-                "endTime": "2024-10-23T10:28:00.000Z"
+                "durationMs": 86400000
               },
               "metrics": [
                 {
@@ -698,8 +694,7 @@
               ],
               "timeContextFromParameter": "timeRangeOverall",
               "timeContext": {
-                "durationMs": 604800000,
-                "endTime": "2024-10-23T10:28:00.000Z"
+                "durationMs": 86400000
               },
               "metrics": [
                 {
