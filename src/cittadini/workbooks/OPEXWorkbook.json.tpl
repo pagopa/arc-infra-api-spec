@@ -356,7 +356,10 @@
                       }
                     }
                   },
-                  "name": "query - 14"
+                  "name": "query - 14",
+                  "styleSettings": {
+                    "maxWidth": "80"
+                  }
                 },
                 {
                   "type": 3,
@@ -395,6 +398,30 @@
                   },
                   "customWidth": "50",
                   "name": "Availability @ AppGateway"
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "let startTime = {timeRangeOverall:start};\r\nlet endTime = {timeRangeOverall:end};\r\nlet interval = totimespan({timeSpan:label});\r\n\r\nlet data = requests\r\n| where timestamp between (startTime .. endTime) and operation_Name has \"arc\";\r\nlet unknowApi = data\r\n| join kind=inner exceptions on operation_Id\r\n| where type has \"OperationNotFound\";\r\nlet totalRequestCount = toscalar (data\r\n| count);\r\nlet joinedUnknowApi = unknowApi\r\n| summarize\r\n        Count = count(),\r\n        Users = dcount(tostring(customDimensions[\"Request-X-Forwarded-For\"]))\r\n        by operation_Name, resultCode, type\r\n| project \r\n        ['Request Name'] = operation_Name,\r\n        ['Result Code'] = resultCode,\r\n        ['Total Response'] = Count,\r\n        ['Rate (% of total requests)'] = (Count * 100) / totalRequestCount,\r\n        ['Users Affected'] = Users,\r\n        ['Type'] = type;\r\nunion joinedUnknowApi",
+                    "size": 0,
+                    "title": "Operation Not Found",
+                    "timeContextFromParameter": "timeRangeOverall",
+                    "queryType": 0,
+                    "resourceType": "microsoft.insights/components",
+                    "crossComponentResources": [
+                      "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/arc-d-itn-core-monitor-rg/providers/Microsoft.Insights/components/arc-d-itn-core-appinsights"
+                    ]
+                  },
+                  "conditionalVisibility": {
+                    "parameterName": "selectedTab",
+                    "comparison": "isEqualTo",
+                    "value": "all"
+                  },
+                  "name": "Operation Not Found",
+                  "styleSettings": {
+                    "showBorder": true
+                  }
                 }
               ]
             },
@@ -572,16 +599,13 @@
               "query": "let startTime = {timeRangeOverall:start};\r\nlet endTime = {timeRangeOverall:end};\r\n\r\ndependencies\r\n| where timestamp between (startTime .. endTime)\r\n| where cloud_RoleName startswith \"pagopaarcbe\"\r\n| where data has (\"{externalService}\")\r\n| summarize total=count() by bin(timestamp,1m), operation_Name\r\n| render timechart",
               "size": 0,
               "title": "Number of calls to the external service \" bizEvents \" divided by API",
-              "timeContext": {
-                "durationMs": 86400000
-              },
+              "timeContextFromParameter": "timeRangeOverall",
               "queryType": 0,
               "resourceType": "microsoft.insights/components",
               "crossComponentResources": [
                 "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/arc-d-itn-core-monitor-rg/providers/Microsoft.Insights/components/arc-d-itn-core-appinsights"
               ]
             },
-            "customWidth": "50",
             "conditionalVisibility": {
               "parameterName": "selectedTab",
               "comparison": "isEqualTo",
@@ -619,6 +643,86 @@
               "value": "externalService"
             },
             "name": "Duration of calls to the external service made by arc-be"
+          },
+          {
+            "type": 10,
+            "content": {
+              "chartId": "workbook539a8e8b-cead-4bf5-97c0-e793617b2805",
+              "version": "MetricsItem/2.0",
+              "size": 0,
+              "chartType": 2,
+              "resourceType": "microsoft.insights/components",
+              "metricScope": 0,
+              "resourceIds": [
+                "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/arc-d-itn-core-monitor-rg/providers/Microsoft.Insights/components/arc-d-itn-core-appinsights"
+              ],
+              "timeContextFromParameter": "timeRangeOverall",
+              "timeContext": {
+                "durationMs": 604800000,
+                "endTime": "2024-10-23T10:28:00.000Z"
+              },
+              "metrics": [
+                {
+                  "namespace": "microsoft.insights/components/kusto",
+                  "metric": "microsoft.insights/components/kusto-Performance Counters-performanceCounters/processCpuPercentageTotal",
+                  "aggregation": 4,
+                  "splitBy": [
+                    "cloud/roleInstance"
+                  ]
+                }
+              ],
+              "title": "Avg Process CPU by Cloud Role Instance",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "customWidth": "50",
+            "conditionalVisibility": {
+              "parameterName": "selectedTab",
+              "comparison": "isEqualTo",
+              "value": "clusterMetrics"
+            },
+            "name": "Avg Process CPU by Cloud Role Instance"
+          },
+          {
+            "type": 10,
+            "content": {
+              "chartId": "workbookdc92903c-915e-4148-806b-c77000e98c0c",
+              "version": "MetricsItem/2.0",
+              "size": 0,
+              "chartType": 2,
+              "resourceType": "microsoft.insights/components",
+              "metricScope": 0,
+              "resourceIds": [
+                "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/arc-d-itn-core-monitor-rg/providers/Microsoft.Insights/components/arc-d-itn-core-appinsights"
+              ],
+              "timeContextFromParameter": "timeRangeOverall",
+              "timeContext": {
+                "durationMs": 604800000,
+                "endTime": "2024-10-23T10:28:00.000Z"
+              },
+              "metrics": [
+                {
+                  "namespace": "microsoft.insights/components/kusto",
+                  "metric": "microsoft.insights/components/kusto-Performance Counters-performanceCounters/memoryAvailableBytes",
+                  "aggregation": 4,
+                  "splitBy": [
+                    "cloud/roleInstance"
+                  ]
+                }
+              ],
+              "title": "Available Memory by Cloud Role Instance",
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "customWidth": "50",
+            "conditionalVisibility": {
+              "parameterName": "selectedTab",
+              "comparison": "isEqualTo",
+              "value": "clusterMetrics"
+            },
+            "name": "Available Memory by Cloud Role Instance"
           }
         ]
       },
