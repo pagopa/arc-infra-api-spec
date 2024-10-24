@@ -362,7 +362,7 @@
                   "type": 3,
                   "content": {
                     "version": "KqlItem/1.0",
-                    "query": "let startTime = {timeRangeOverall:start};\nlet endTime = {timeRangeOverall:end};\nlet interval = totimespan({timeSpan:label});\n\nlet dataset = requests\n    // additional filters can be applied here\n    | where timestamp between (startTime .. endTime) and operation_Name has \"arc\"\n;\ndataset\n| summarize percentile_95=percentile(duration, 95) by bin(timestamp, interval)\n| project timestamp, percentile_95, watermark=1000\n| render timechart",
+                    "query": "let startTime = {timeRangeOverall:start};\nlet endTime = {timeRangeOverall:end};\nlet interval = totimespan({timeSpan:label});\n\nlet dataset = requests\n    // additional filters can be applied here\n    | where timestamp between (startTime .. endTime) and operation_Name startswith \"arc\"\n;\ndataset\n| summarize percentile_95=percentile(duration, 95) by bin(timestamp, interval)\n| project timestamp, percentile_95, watermark=1000\n| render timechart",
                     "size": 0,
                     "aggregation": 3,
                     "showAnalytics": true,
