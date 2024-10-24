@@ -609,6 +609,7 @@
                 "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
               ]
             },
+            "customWidth": "50",
             "conditionalVisibility": {
               "parameterName": "selectedTab",
               "comparison": "isEqualTo",
@@ -640,6 +641,7 @@
                 "customThresholdLineStyle": 0
               }
             },
+            "customWidth": "50",
             "conditionalVisibility": {
               "parameterName": "selectedTab",
               "comparison": "isEqualTo",
