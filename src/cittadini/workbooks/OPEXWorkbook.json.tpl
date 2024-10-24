@@ -116,7 +116,7 @@
                     "queryType": 0,
                     "resourceType": "microsoft.insights/components",
                     "crossComponentResources": [
-                      "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
+                      "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
                     ],
                     "gridSettings": {
                       "formatters": [
@@ -370,7 +370,7 @@
                     "queryType": 0,
                     "resourceType": "microsoft.insights/components",
                     "crossComponentResources": [
-                      "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
+                      "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
                     ],
                     "visualization": "timechart"
                   },
@@ -389,7 +389,7 @@
                     "queryType": 0,
                     "resourceType": "microsoft.operationalinsights/workspaces",
                     "crossComponentResources": [
-                      "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.OperationalInsights/workspaces/${prefix}-${location_short}-core-law"
+                      "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.OperationalInsights/workspaces/${prefix}-${location_short}-core-law"
                     ],
                     "visualization": "timechart",
                     "chartSettings": {
@@ -413,7 +413,7 @@
                     "queryType": 0,
                     "resourceType": "microsoft.insights/components",
                     "crossComponentResources": [
-                      "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
+                      "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
                     ]
                   },
                   "conditionalVisibility": {
@@ -445,7 +445,7 @@
               "resourceType": "microsoft.containerservice/managedclusters",
               "metricScope": 0,
               "resourceIds": [
-                "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-${env}-aks-rg/providers/Microsoft.ContainerService/managedClusters/${prefix}-${location_short}-${env}-aks"
+                "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-${env}-aks-rg/providers/Microsoft.ContainerService/managedClusters/${prefix}-${location_short}-${env}-aks"
               ],
               "timeContextFromParameter": "timeRangeOverall",
               "timeContext": {
@@ -485,7 +485,7 @@
               "resourceType": "microsoft.containerservice/managedclusters",
               "metricScope": 0,
               "resourceIds": [
-                "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-${env}-aks-rg/providers/Microsoft.ContainerService/managedClusters/${prefix}-${location_short}-${env}-aks"
+                "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-${env}-aks-rg/providers/Microsoft.ContainerService/managedClusters/${prefix}-${location_short}-${env}-aks"
               ],
               "timeContextFromParameter": "timeRangeOverall",
               "timeContext": {
@@ -561,7 +561,7 @@
               "queryType": 0,
               "resourceType": "microsoft.insights/components",
               "crossComponentResources": [
-                "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
+                "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
               ]
             },
             "customWidth": "50",
@@ -584,7 +584,7 @@
               "queryType": 0,
               "resourceType": "microsoft.insights/components",
               "crossComponentResources": [
-                "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
+                "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
               ]
             },
             "customWidth": "50",
@@ -606,7 +606,7 @@
               "queryType": 0,
               "resourceType": "microsoft.insights/components",
               "crossComponentResources": [
-                "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
+                "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
               ]
             },
             "customWidth": "50",
@@ -629,7 +629,7 @@
               "queryType": 0,
               "resourceType": "microsoft.insights/components",
               "crossComponentResources": [
-                "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
+                "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
               ],
               "visualization": "timechart",
               "chartSettings": {
@@ -659,7 +659,7 @@
               "resourceType": "microsoft.insights/components",
               "metricScope": 0,
               "resourceIds": [
-                "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
+                "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
               ],
               "timeContextFromParameter": "timeRangeOverall",
               "timeContext": {
@@ -698,7 +698,7 @@
               "resourceType": "microsoft.insights/components",
               "metricScope": 0,
               "resourceIds": [
-                "/subscriptions/e38f8c8c-3996-4e3c-976d-89cb22885543/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
+                "/subscriptions/${subscription_id}/resourceGroups/${prefix}-${location_short}-core-monitor-rg/providers/Microsoft.Insights/components/${prefix}-${location_short}-core-appinsights"
               ],
               "timeContextFromParameter": "timeRangeOverall",
               "timeContext": {
