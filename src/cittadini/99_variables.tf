@@ -68,3 +68,10 @@ variable "apim_diagnostics_enabled" {
   type        = bool
   description = "To enable or not APIm diagnostics data"
 }
+
+### azure application insights workbook
+
+variable "monitor_resource_group_name" {
+  type        = string
+  description = "Monitor resource group name"
+}
