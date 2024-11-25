@@ -21,7 +21,7 @@ module "apim_cittadini_product" {
   subscriptions_limit   = 0
 
   policy_xml = templatefile("./api_product/_base_policy.xml", {
-    fe_origin  = local.fe_hostname
-    dev_origin = var.env_short != "d" ? "" : "\n<origin>http://localhost:1234</origin>"
+    fe_origin    = local.fe_hostname
+    local_origin = contains(["d", "u"], var.env_short) ? "\n<origin>http://localhost:1234</origin>" : ""
   })
 }
