@@ -518,6 +518,7 @@ components:
         - noticeDate
         - pspName
         - amount
+        - totalAmount
         - origin
       type: object
       properties:
@@ -554,6 +555,9 @@ components:
           type: integer
           format: int64
         fee:
+          type: integer
+          format: int64
+        totalAmount:
           type: integer
           format: int64
         origin:
