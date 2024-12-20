@@ -26,7 +26,7 @@ module "apim_api_health_v1" {
   service_url           = local.apim_health_api.service_url
 
   content_format = "openapi"
-  content_value  = templatefile("./api/cittadini/health/health_openapi.yml", {
+  content_value = templatefile("./api/cittadini/health/health_openapi.yml", {
     hostname = local.apim_hostname
   })
 
