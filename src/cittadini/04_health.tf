@@ -8,6 +8,15 @@ locals {
   }
 }
 
+resource "azurerm_api_management_api_version_set" "health_ver_set" {
+
+  name                = "${var.env_short}-health-version-set"
+  resource_group_name = local.apim_rg
+  api_management_name = local.apim_name
+  display_name        = local.apim_health_api.display_name
+  versioning_scheme   = "Segment"
+}
+
 module "apim_api_health_v1" {
   source = "./.terraform/modules/__v3__/api_management_api"
 
@@ -15,7 +24,7 @@ module "apim_api_health_v1" {
   api_management_name = local.apim_name
   resource_group_name = local.apim_rg
   protocols           = ["https"]
-  version_set_id      = azurerm_api_management_api_version_set.cittadini_ver_set.id
+  version_set_id      = azurerm_api_management_api_version_set.health_ver_set.id
   api_version         = "v1"
 
   product_ids           = [module.apim_cittadini_product.product_id]

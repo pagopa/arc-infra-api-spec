@@ -6,11 +6,11 @@ info:
 servers:
   - url: 'https://${hostname}/health/v1'
 paths:
-  /status:
+  /:
     get:
       tags:
         - health
-      summary: "Provides application liveliness, including redis"
+      summary: "Provides application liveliness status, including redis"
       operationId: getHealthLiveness
       responses:
         '200':
@@ -30,30 +30,6 @@ components:
           allOf:
             - $ref: '#/components/schemas/HealthStatus'
             - description: Overall status of the application
-        components:
-          type: object
-          properties:
-            diskSpace:
-              type: object
-              properties:
-                status:
-                  allOf:
-                    - $ref: '#/components/schemas/HealthStatus'
-                    - description: Status of disk space
-            livenessState:
-              type: object
-              properties:
-                status:
-                  allOf:
-                    - $ref: '#/components/schemas/HealthStatus'
-                    - description: Liveness state status
-            redis:
-              type: object
-              properties:
-                status:
-                  allOf:
-                    - $ref: '#/components/schemas/HealthStatus'
-                    - description: Redis connection status
     HealthStatus:
       type: string
       enum:
