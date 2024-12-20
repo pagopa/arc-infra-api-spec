@@ -4,7 +4,7 @@ info:
   description: Api and Models
   version: 0.0.1
 servers:
-  - url: 'https://${hostname}/arc/v1'
+  - url: 'https://${hostname}/health/v1'
 paths:
   /status:
     get:
@@ -18,17 +18,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ActuatorHealthLivenessResponse'
+                $ref: '#/components/schemas/HealthLivenessResponse'
         '503':
           description: "Service unavailable"
 components:
   schemas:
-    ActuatorHealthLivenessResponse:
+    HealthLivenessResponse:
       type: object
       properties:
         status:
           allOf:
-            - $ref: '#/components/schemas/ActuatorHealthStatus'
+            - $ref: '#/components/schemas/HealthStatus'
             - description: Overall status of the application
         components:
           type: object
@@ -38,47 +38,23 @@ components:
               properties:
                 status:
                   allOf:
-                    - $ref: '#/components/schemas/ActuatorHealthStatus'
+                    - $ref: '#/components/schemas/HealthStatus'
                     - description: Status of disk space
-                details:
-                  type: object
-                  properties:
-                    total:
-                      type: integer
-                      description: Total disk space in bytes
-                    free:
-                      type: integer
-                      description: Free disk space in bytes
-                    threshold:
-                      type: integer
-                      description: Disk space threshold in bytes
-                    path:
-                      type: string
-                      description: Path being monitored
-                    exists:
-                      type: boolean
-                      description: Whether the disk path exists
             livenessState:
               type: object
               properties:
                 status:
                   allOf:
-                    - $ref: '#/components/schemas/ActuatorHealthStatus'
+                    - $ref: '#/components/schemas/HealthStatus'
                     - description: Liveness state status
             redis:
               type: object
               properties:
                 status:
                   allOf:
-                    - $ref: '#/components/schemas/ActuatorHealthStatus'
+                    - $ref: '#/components/schemas/HealthStatus'
                     - description: Redis connection status
-                details:
-                  type: object
-                  properties:
-                    version:
-                      type: string
-                      description: Redis version
-    ActuatorHealthStatus:
+    HealthStatus:
       type: string
       enum:
         - UP

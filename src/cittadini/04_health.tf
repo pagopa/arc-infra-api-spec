@@ -2,7 +2,7 @@ locals {
   apim_health_api = {
     display_name          = "Health API"
     description           = "Health check API"
-    path                  = "status"
+    path                  = "health"
     subscription_required = false
     service_url           = "https://${var.dns_zone_internal_entry}.${var.apim_dns_zone_prefix}.${var.external_domain}/arcbe/actuator/health/liveness"
   }
