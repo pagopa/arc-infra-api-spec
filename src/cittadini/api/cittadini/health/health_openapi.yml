@@ -1,0 +1,87 @@
+openapi: 3.0.1
+info:
+  title: pagopa-arc-be
+  description: Api and Models
+  version: 0.0.1
+servers:
+  - url: 'https://${hostname}/arc/v1'
+paths:
+  /status:
+    get:
+      tags:
+        - health
+      summary: "Provides application liveliness, including redis"
+      operationId: getHealthLiveness
+      responses:
+        '200':
+          description: "Obtained health status"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActuatorHealthLivenessResponse'
+        '503':
+          description: "Service unavailable"
+components:
+  schemas:
+    ActuatorHealthLivenessResponse:
+      type: object
+      properties:
+        status:
+          allOf:
+            - $ref: '#/components/schemas/ActuatorHealthStatus'
+            - description: Overall status of the application
+        components:
+          type: object
+          properties:
+            diskSpace:
+              type: object
+              properties:
+                status:
+                  allOf:
+                    - $ref: '#/components/schemas/ActuatorHealthStatus'
+                    - description: Status of disk space
+                details:
+                  type: object
+                  properties:
+                    total:
+                      type: integer
+                      description: Total disk space in bytes
+                    free:
+                      type: integer
+                      description: Free disk space in bytes
+                    threshold:
+                      type: integer
+                      description: Disk space threshold in bytes
+                    path:
+                      type: string
+                      description: Path being monitored
+                    exists:
+                      type: boolean
+                      description: Whether the disk path exists
+            livenessState:
+              type: object
+              properties:
+                status:
+                  allOf:
+                    - $ref: '#/components/schemas/ActuatorHealthStatus'
+                    - description: Liveness state status
+            redis:
+              type: object
+              properties:
+                status:
+                  allOf:
+                    - $ref: '#/components/schemas/ActuatorHealthStatus'
+                    - description: Redis connection status
+                details:
+                  type: object
+                  properties:
+                    version:
+                      type: string
+                      description: Redis version
+    ActuatorHealthStatus:
+      type: string
+      enum:
+        - UP
+        - UNKNOWN
+        - DOWN
+        - OUT_OF_SERVICE
