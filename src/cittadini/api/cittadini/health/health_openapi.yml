@@ -1,0 +1,39 @@
+openapi: 3.0.1
+info:
+  title: pagopa-arc-be
+  description: Api and Models
+  version: 0.0.1
+servers:
+  - url: 'https://${hostname}/health/v1'
+paths:
+  /:
+    get:
+      tags:
+        - health
+      summary: "Provides application liveliness status, including redis"
+      operationId: getHealthLiveness
+      responses:
+        '200':
+          description: "Obtained health status"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthLivenessResponse'
+        '503':
+          description: "Service unavailable"
+components:
+  schemas:
+    HealthLivenessResponse:
+      type: object
+      properties:
+        status:
+          allOf:
+            - $ref: '#/components/schemas/HealthStatus'
+            - description: Overall status of the application
+    HealthStatus:
+      type: string
+      enum:
+        - UP
+        - UNKNOWN
+        - DOWN
+        - OUT_OF_SERVICE
