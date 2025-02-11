@@ -194,6 +194,8 @@ paths:
                 error_description: "Invalid amount format"
         '401':
           description: "Wrong or missing function key"
+        '429':
+          description: "Too many Requests"
         '500':
           description: "Internal Server Error"
           content:
@@ -239,6 +241,8 @@ paths:
               example:
                 error: "notice_not_found_error"
                 error_description: "string"
+        '429':
+          description: "Too many Requests"
         '500':
           description: "Internal Server Error"
           content:
@@ -286,6 +290,8 @@ paths:
               example:
                 error: "receipt_not_found_error"
                 error_description: "string"
+        '429':
+          description: "Too many Requests"
         '500':
           description: "Internal Server Error"
           content:
@@ -324,6 +330,8 @@ paths:
                 error_description: "One or more inputs provided during the request are invalid"
         '401':
           description: "Wrong or missing function key"
+        '429':
+          description: "Too many Requests"
         '500':
           description: "Internal Server Error"
           content:
@@ -380,6 +388,8 @@ paths:
                 error_description: "One or more inputs provided during the request from pull payment are invalid"
         '401':
           description: "Wrong or missing function key"
+        '429':
+          description: "Too many Requests"
         '500':
           description: "Internal Server Error"
           content:
@@ -433,6 +443,8 @@ paths:
                 $ref: '#/components/schemas/ErrorDTO'
               example:
                 error: payment_notice_not_found_error
+        '429':
+          description: "Too many Requests"
         '500':
           description: "Internal Server Error"
           content:
@@ -884,6 +896,7 @@ components:
             - invalid_date
             - invalid_email
             - invalid_request
+            - too_many_request
         error_description:
           type: string
   securitySchemes:
